@@ -23,16 +23,20 @@ def dumpJson(filename, jsonlist):
   json.dump(jsonlist, dumpFile)
   dumpFile.close()
 
-stockNames = ['MSFT', 'COTY']
-myStocks = []
-for name in stockNames:
-  newStock = Stock(name, 0)
-  myStocks.append(newStock)
+def main():
+  stockNames = ['MSFT', 'COTY']
+  myStocks = []
+  for name in stockNames:
+    newStock = Stock(name, 0)
+    myStocks.append(newStock)
 
-toJson = []
-for stock in myStocks:
-  print(stock.getMA(40), stock.getLast(), stock.dump())
-  toJson.append(stock.dump())
+  toJson = []
+  for stock in myStocks:
+    print(stock.getMA(40), stock.getLast(), stock.dump())
+    toJson.append(stock.dump())
 
-dumpJson(DUMP, toJson)
-print(readDump(DUMP))
+  dumpJson(DUMP, toJson)
+  print(readDump(DUMP))
+
+if __name__ == '__main__':
+  main()
