@@ -6,12 +6,22 @@
 import sys
 import yfinance as yf
 import json
+from datetime import datetime
 
 #Local imports
 from stock import Stock 
 from dump import Dump
 
 __DUMP__ = 'testDump.txt'
+__DURATION__= 40
+__CLOSE__ = datetime.strptime('15:59:00', '%H:%M:%S').time()
+
+def checkStock(inStock):
+  ma = inStock.getMA(__DURATION__)
+  last = inStock.getLast()
+  if ma > last:
+    return 1
+  return 0
 
 def main():
   data = Dump(__DUMP__)
@@ -23,10 +33,12 @@ def main():
 
   toJson = []
   for stock in myStocks:
+    print(checkStock(stock))
     toJson.append(stock.dump())
 
-  print(toJson)
-  data.outDump({'stocks':toJson})
+  if __CLOSE__ == myStocks[0].getTime():
+    print(toJson)
+    data.outDump({'stocks':toJson})
 
 if __name__ == '__main__':
   main()

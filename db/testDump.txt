@@ -1,1 +1,1 @@
-{"stocks": [{"name": "MSFT", "holding": 0}, {"name": "COTY", "holding": 0}]}
+{"stocks": [{"name": "MSFT", "holding": -1}, {"name": "COTY", "holding": -1}]}

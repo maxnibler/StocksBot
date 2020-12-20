@@ -14,9 +14,7 @@ from test import MyTest
 tests = []
 
 def gen():
-  firstTest = MyTest('Read JSON File', main.readDump)
-  firstTest.expect('fakeFile.txt', {"This": "is", "A": "Test"})
-  tests.append(firstTest)
+  return
 
 
 def run():

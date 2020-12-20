@@ -6,6 +6,7 @@
 import sys
 import yfinance as yf
 import json
+from datetime import datetime
 
 def average(hl):
   total = 0
@@ -37,6 +38,10 @@ class Stock:
   def updateHolding(self, amount):
     self.holding = amount
     return
+
+  def getTime(self):
+    time = self.history.index[-1].to_pydatetime().time()
+    return time
 
   def dump(self):
     myjson = {
