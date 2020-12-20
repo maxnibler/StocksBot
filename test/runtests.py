@@ -7,7 +7,11 @@ import sys
 
 #Local Imports
 import maintests
+import stocktests
 
 print('Main Tests:')
 maintests.gen()
 maintests.run()
+print('\nStock Tests:')
+stocktests.gen()
+stocktests.run()
