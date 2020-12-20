@@ -38,9 +38,6 @@ class Stock:
     self.holding = amount
     return
 
-  def getHolding(self):
-    return self.holding
-
   def dump(self):
     myjson = {
       'name': self.name,
