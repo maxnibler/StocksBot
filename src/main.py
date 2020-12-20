@@ -11,6 +11,7 @@ from datetime import datetime
 #Local imports
 from stock import Stock 
 from dump import Dump
+import mylogging as mylog
 
 __DUMP__ = 'testDump.txt'
 __DURATION__= 40

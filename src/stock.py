@@ -39,6 +39,9 @@ class Stock:
     self.holding = amount
     return
 
+  def getHolding(self):
+    return self.holding
+
   def getTime(self):
     time = self.history.index[-1].to_pydatetime().time()
     return time
