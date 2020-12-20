@@ -43,4 +43,4 @@ class Stock:
       'name': self.name,
       'holding': self.holding,
     }
-    return json.dumps(myjson)
+    return myjson

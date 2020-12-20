@@ -9,34 +9,24 @@ import json
 
 #Local imports
 from stock import Stock 
+from dump import Dump
 
-DUMP = 'testDump.txt'
-
-def readDump(filename):
-  dumpFile = open('../db/'+filename, 'r')
-  rd = json.load(dumpFile)
-  dumpFile.close()
-  return rd
-
-def dumpJson(filename, jsonlist):
-  dumpFile = open('../db/'+filename, 'w')
-  json.dump(jsonlist, dumpFile)
-  dumpFile.close()
+__DUMP__ = 'testDump.txt'
 
 def main():
-  stockNames = ['MSFT', 'COTY']
+  data = Dump(__DUMP__)
+  stockData = data.getStocks()
   myStocks = []
-  for name in stockNames:
-    newStock = Stock(name, 0)
+  for sd in stockData:
+    newStock = Stock(sd['name'], sd['holding'])
     myStocks.append(newStock)
 
   toJson = []
   for stock in myStocks:
-    print(stock.getMA(40), stock.getLast(), stock.dump())
     toJson.append(stock.dump())
 
-  dumpJson(DUMP, toJson)
-  print(readDump(DUMP))
+  print(toJson)
+  data.outDump({'stocks':toJson})
 
 if __name__ == '__main__':
   main()
