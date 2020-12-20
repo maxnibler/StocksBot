@@ -5,6 +5,7 @@
 #Lib imports
 import sys
 import yfinance as yf
+import json
 
 def average(hl):
   total = 0
@@ -37,9 +38,12 @@ class Stock:
     self.holding = amount
     return
 
+  def getHolding(self):
+    return self.holding
+
   def dump(self):
-    json = {
+    myjson = {
       'name': self.name,
       'holding': self.holding,
     }
-    return json
+    return json.dumps(myjson)

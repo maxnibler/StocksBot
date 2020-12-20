@@ -4,6 +4,7 @@
 
 #Package Imports
 import sys
+import json
 sys.path.append('/home/max/gitrep/StockBot/src')
 
 #Local Imports
@@ -13,8 +14,8 @@ from test import MyTest
 tests = []
 
 def gen():
-  firstTest = MyTest('Print World', main.printWorld)
-  firstTest.expect(None, 'Hello World!')
+  firstTest = MyTest('Read JSON File', main.readDump)
+  firstTest.expect('fakeFile.txt', {"This": "is", "A": "Test"})
   tests.append(firstTest)
 
 
