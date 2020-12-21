@@ -45,9 +45,10 @@ def main():
     newStock = Stock(sd['name'], sd['holding'])
     myStocks.append(newStock)
 
-  toJson = []
-  for stock in myStocks:
-    toJson.append(stock.dump())
+  
+  if __CLOSE__ == myStocks[0].getTime():
+    print('Market is closed')
+    return
 
   while __CLOSE__ != myStocks[0].getTime():
     for stock in myStocks:
@@ -58,6 +59,10 @@ def main():
       elif indicator < 0:
         stock.updateHolding(trade.sell(stock))
 
+  toJson = []
+  for stock in myStocks:
+    mylog.baseLog('{n} closed at {v}'.format(n=stock.getName(), v=stock.getLast()))
+    toJson.append(stock.dump())
   print(toJson)
   data.outDump({'stocks':toJson})
 
