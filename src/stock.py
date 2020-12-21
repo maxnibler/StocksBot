@@ -18,11 +18,12 @@ class Stock:
   def __init__(self, name, holding):
     self.name = name
     self.holding = holding
-    self.history = self.update()
+    self.update()
   
   def update(self):
     ticker = yf.Ticker(self.name)
-    return ticker.history(interval='1m', period='1d')
+    self.history = ticker.history(interval='1m', period='1d')
+    return self.history
 
   def getMA(self, duration):
     highLow = []

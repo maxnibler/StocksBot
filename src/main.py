@@ -46,7 +46,7 @@ def main():
     myStocks.append(newStock)
 
   print(trade.connect())
-
+  
   if __CLOSE__ == myStocks[0].getTime():
     print('Market is closed')
     return
@@ -54,6 +54,7 @@ def main():
   while __CLOSE__ != myStocks[0].getTime():
     for stock in myStocks:
       stock.update()
+      print(stock.dump())
       indicator = checkStock(stock)
       if indicator > 0:
         stock.updateHolding(trade.buy(stock))
