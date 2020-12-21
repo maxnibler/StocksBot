@@ -51,11 +51,12 @@ def main():
 
   while __CLOSE__ != myStocks[0].getTime():
     for stock in myStocks:
+      stock.update()
       indicator = checkStock(stock)
       if indicator > 0:
-        trade.buy(stock)
+        stock.updateHolding(trade.buy(stock))
       elif indicator < 0:
-        trade.sell(stock)
+        stock.updateHolding(trade.sell(stock))
 
   print(toJson)
   data.outDump({'stocks':toJson})

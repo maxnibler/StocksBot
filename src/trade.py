@@ -10,9 +10,11 @@ from stock import Stock
 import mylogging as mylog
 
 def buy(inStock):
-  mylog.baseLog("Buy {n}".format(n=inStock.getName()))
-  return
+  mylog.baseLog("Buy {n}, Last: {l}, MA: {ma}"
+      .format(n=inStock.getName(), l=inStock.getLast(), ma=inStock.getMA()))
+  return 1
 
 def sell(inStock):
-  mylog.baseLog("Sell {n}".format(n=inStock.getName()))
-  return
+  mylog.baseLog("Sell {n}, Last: {l}, MA: {ma}"
+      .format(n=inStock.getName(), l=inStock.getLast(), ma=inStock.getMA()))
+  return 0
