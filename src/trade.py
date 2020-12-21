@@ -9,6 +9,8 @@ import sys
 from stock import Stock
 import mylogging as mylog
 
+__KEYFILE__ = '.alpacakeys.txt'
+
 def buy(inStock):
   mylog.baseLog("Buy {n}, Last: {l}, MA: {ma}"
       .format(n=inStock.getName(), l=inStock.getLast(), ma=inStock.getMA()))
