@@ -5,6 +5,7 @@
 #Lib imports
 import sys
 import json
+import requests
 
 #Local imports
 from stock import Stock
@@ -12,12 +13,24 @@ import mylogging as mylog
 
 __KEYFILE__ = '.alpacakeys.txt'
 
-def connect():
+def getKeys():
   keyfile = open(__KEYFILE__, 'r')
-  keys = json.load(keys)
+  keys = json.load(keyfile)
+  coreurl = keys['paper']
+  au = {'accUrl': "{}/v2/account".format(coreurl)}
+  ou = {'orderUrl': '{}/v2/orders'.format(coreurl)}
+  keys.update(au)
+  keys.update(ou)
   print(keys)
   keyfile.close()
-  return
+  return keys
+
+
+def connect():
+  keys = getKeys()
+  headers = {'APCA-API-KEY-ID': keys['APIkeyID'],'APCA-API-SECRET-KEY': keys['secretkey']}
+  r = requests.get(keys['accUrl'], headers = headers)
+  return json.loads(r.content)
 
 def buy(inStock):
   mylog.baseLog("Buy {n}, Last: {l}, MA: {ma}"

@@ -45,7 +45,7 @@ def main():
     newStock = Stock(sd['name'], sd['holding'])
     myStocks.append(newStock)
 
-  trade.connect()
+  print(trade.connect())
 
   if __CLOSE__ == myStocks[0].getTime():
     print('Market is closed')
