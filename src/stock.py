@@ -27,7 +27,7 @@ class Stock:
 
   def getMA(self, duration):
     highLow = []
-    for i in range(1, duration+1):
+    for i in range(2, duration+2):
       total = self.history['High'][-i] + self.history['Low'][-i]
       highLow.append(total/2)
     return average(highLow)

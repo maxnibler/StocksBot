@@ -21,21 +21,21 @@ __CLOSE__ = datetime.strptime('15:59:00', '%H:%M:%S').time()
 def checkStock(inStock):
   ma = inStock.getMA(__DURATION__)
   last = inStock.getLast()
-  if ma >= last:
-    if inStock.getHolding() == -1:
-      return 0
-    elif isStock.getHolding() == 0: 
-      return 1
-    elif isStock.getHolding() > 0:
-      return 0
-  else:
+  if ma > last:
     if inStock.getHolding() == -1:
       inStock.updateHolding(0)
       return 0
-    elif isStock.getHolding() == 0: 
+    elif inStock.getHolding() == 0: 
       return 0
-    elif isStock.getHolding() > 0:
+    elif inStock.getHolding() > 0:
       return -1
+  else:
+    if inStock.getHolding() == -1:
+      return 0
+    elif inStock.getHolding() == 0: 
+      return 1
+    elif inStock.getHolding() > 0:
+      return 0
 
 def main():
   data = Dump(__DUMP__)
@@ -50,6 +50,8 @@ def main():
   if __CLOSE__ == myStocks[0].getTime():
     print('Market is closed')
     return
+
+  mylog.baseLog('Open for the day')
 
   while __CLOSE__ != myStocks[0].getTime():
     for stock in myStocks:
