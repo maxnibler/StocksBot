@@ -15,11 +15,10 @@ import mylogging as mylog
 import trade
 
 __DUMP__ = 'testDump.txt'
-__DURATION__= 40
 __CLOSE__ = datetime.strptime('15:59:00', '%H:%M:%S').time()
 
 def checkStock(inStock):
-  ma = inStock.getMA(__DURATION__)
+  ma = inStock.getMA(trade.__DURATION__)
   last = inStock.getLast()
   if ma > last:
     if inStock.getHolding() == -1:

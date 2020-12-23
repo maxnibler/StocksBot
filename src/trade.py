@@ -12,7 +12,7 @@ from stock import Stock
 import mylogging as mylog
 
 __KEYFILE__ = '.alpacakeys.txt'
-__DURATION__= 40
+__DURATION__= 60
 
 def getKeys():
   keyfile = open(__KEYFILE__, 'r')
