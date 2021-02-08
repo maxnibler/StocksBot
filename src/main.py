@@ -64,7 +64,9 @@ def main():
   toJson = []
   for stock in myStocks:
     mylog.baseLog('{n} closed at {v}'.format(n=stock.getName(), v=stock.getLast()))
-    toJson.append(stock.dump())
+    stockDump = stock.dump()
+    stockDump['holding'] = -1
+    toJson.append(stockDump)
   print(toJson)
   data.outDump({'stocks':toJson})
 
