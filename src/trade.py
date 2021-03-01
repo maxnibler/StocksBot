@@ -22,7 +22,6 @@ def getKeys():
   ou = {'orderUrl': '{}/v2/orders'.format(coreurl)}
   keys.update(au)
   keys.update(ou)
-  print(keys)
   keyfile.close()
   return keys
 
